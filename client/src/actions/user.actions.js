@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const GET_USER = "GET_USER";
-export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
-export const UPDATE_BIO = "UPDATE_BIO";
-export const FOLLOW_USER = "FOLLOW_USER";
-export const UNFOLLOW_USER = "UNFOLLOW_USER";
+export const GET_USER = 'GET_USER';
+export const UPLOAD_PICTURE = 'UPLOAD_PICTURE';
+export const UPDATE_BIO = 'UPDATE_BIO';
+export const FOLLOW_USER = 'FOLLOW_USER';
+export const UNFOLLOW_USER = 'UNFOLLOW_USER';
 
-export const GET_USER_ERRORS = "GET_USER_ERRORS";
+export const GET_USER_ERRORS = 'GET_USER_ERRORS';
 
 export const getUser = (uid) => {
   return (dispatch) => {
@@ -27,7 +27,7 @@ export const uploadPicture = (data, id) => {
         if (res.data.errors) {
           dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
         } else {
-          dispatch({ type: GET_USER_ERRORS, payload: "" });
+          dispatch({ type: GET_USER_ERRORS, payload: '' });
           return axios
             .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
             .then((res) => {
@@ -42,7 +42,7 @@ export const uploadPicture = (data, id) => {
 export const updateBio = (userId, bio) => {
   return (dispatch) => {
     return axios({
-      method: "put",
+      method: 'put',
       url: `${process.env.REACT_APP_API_URL}api/user/` + userId,
       data: { bio },
     })
@@ -56,7 +56,7 @@ export const updateBio = (userId, bio) => {
 export const followUser = (followerId, idToFollow) => {
   return (dispatch) => {
     return axios({
-      method: "patch",
+      method: 'patch',
       url: `${process.env.REACT_APP_API_URL}api/user/follow/` + followerId,
       data: { idToFollow },
     })
@@ -70,7 +70,7 @@ export const followUser = (followerId, idToFollow) => {
 export const unfollowUser = (followerId, idToUnfollow) => {
   return (dispatch) => {
     return axios({
-      method: "patch",
+      method: 'patch',
       url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
       data: { idToUnfollow },
     })
